@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVPFramework_HelloWorld", "MVPFramework_Demo\MVPFramework_HelloWorld.csproj", "{6EB6E5F9-BC38-4C8A-9175-CF1518ADF7D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVPFramework_HelloWorld", "MVPFramework_HelloWorld\MVPFramework_HelloWorld.csproj", "{6EB6E5F9-BC38-4C8A-9175-CF1518ADF7D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVPFramework_More", "MVPFramework_More\MVPFramework_More.csproj", "{5BD6BCA5-3A14-4B8D-B551-A2C539B6EF8F}"
 EndProject
