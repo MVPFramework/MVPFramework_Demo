@@ -16,14 +16,14 @@
 1. 创建View组件。 新建一个Winform窗体,并添加一个Label组件  
 ![](README_images/step1.png)
 2. 创建View层暴露给Presenter层的逻辑接口。继承IViewLogic即可。
-```
+``` csharp
     public interface IHelloWorldView:IViewLogic
     {
         void LayoutSayTxt(string sayTxt);
     }
 ```
 3. 实现ViewLogic层。此层与View组件进行了绑定，且实现了暴露给Presenter层的逻辑接口。
-```
+``` csharp
 public class HelloWorldViewLogic : ViewLogic<HelloWorldView, IHelloWorldView>, IHelloWorldView
     {
         public void Activate()
@@ -48,7 +48,7 @@ public class HelloWorldViewLogic : ViewLogic<HelloWorldView, IHelloWorldView>, I
     }
 ```
 4. 实现Presenter层。此层通过特性的方式与ViewLogic层绑定.
-```
+``` csharp
     [ViewLogicBinding(typeof(HelloWorldViewLogic))]
     public class HelloWorldPresenter : Presenter<IHelloWorldView>
     {
@@ -70,7 +70,7 @@ public class HelloWorldViewLogic : ViewLogic<HelloWorldView, IHelloWorldView>, I
     }
 ```
 5. 将界面放到PresenterStub中进行统一管理。
-```
+``` csharp
     public class PresenterStub
     {
         // HelloWorld 界面
@@ -94,7 +94,7 @@ public class HelloWorldViewLogic : ViewLogic<HelloWorldView, IHelloWorldView>, I
 
 ### 一些复杂的用法举例
 1. Presenter:ViewLogic = 1:N的关系, 实现如下:
-```
+``` csharp
     [ViewLogicBinding(typeof(DataPart1ViewLogic))]// 绑定DataPart1ViewLogic
     [ViewLogicBinding(typeof(DataPart2ViewLogic))]// 绑定DataPart2ViewLogic
     public class DataPartPresenter : PresenterNN
@@ -110,18 +110,18 @@ public class HelloWorldViewLogic : ViewLogic<HelloWorldView, IHelloWorldView>, I
 		
     }
 ```
-a. 在Presenter上声明多个特性即可完成1:N的绑定关系
-b. Presenter需要继承PresenterNN
-c. 获取Presenter的实例, 可以通过** GetOrCreateViewLogic(Type type) ** 获取
-d. 如果想缓存Model，可以在类中定义， 也可以通过** AddModel(Model model) ** 来直接添加，获取通过** GetModel<T>() ** 直接获取
+a. 在Presenter上声明多个特性即可完成1:N的绑定关系  
+b. Presenter需要继承PresenterNN  
+c. 获取Presenter的实例, 可以通过**GetOrCreateViewLogic(Type type)** 获取  
+d. 如果想缓存Model，可以在类中定义， 也可以通过**AddModel(Model model)** 来直接添加，获取通过**GetModel<T>()** 直接获取  
 
-2. Presenter:ViewLogic = 1:1的关系, 就是在最前面演示的HelloWorld， 如果想实现数据缓存, 直接对 ** Model ** 进行赋值即可。
-```
+2. Presenter:ViewLogic = 1:1的关系, 就是在最前面演示的HelloWorld， 如果想实现数据缓存, 直接对 **Model** 进行赋值即可。
+``` csharp
 Model = modelInfo;
 ```
 
 3. Presenter:ViewLogic = N:1的关系， 实现如下:
-```
+``` csharp
 	[ViewLogicBinding(typeof(ViewLogicNNViewLogic))]
     public class ViewLogicNNPart1Presenter: Presenter<IViewLogicNNView>
     {
@@ -132,4 +132,4 @@ Model = modelInfo;
     {
 	}
 ```
-与1:1的结构很类似, 这里N:1的关系需要注意的是, 1指的是1个ViewLogic类型， 实际上对于ViewLogic实例来说, 还是Presenter:ViewLogic = 1:1 
+与1:1的结构很类似, 这里N:1的关系需要注意的是, 1指的是1个ViewLogic类型， 实际上对于ViewLogic实例来说, 还是Presenter:ViewLogic = 1:1   
