@@ -3,13 +3,14 @@
 
 项目结构的划分:
 ```
-+ MVPFramework_Demo
++ MVPFramework_HelloWorld // 只包含一个最简单的HelloWorld显示项目
 	+ Models // 保存数据结构的定义
 	+ Presenters // 与界面显示相关的数据的逻辑处理
 	+ Views
 		+ Interfaces // 需要暴露给Presenter的接口
 		+ UIComponents // 界面、组件
 		+ UILogic // 界面显示的逻辑
++ MVPFramework_More // 包含更多复杂的用法
 ```
 
 ### 最简单的HelloWorld
@@ -133,3 +134,7 @@ Model = modelInfo;
 	}
 ```
 与1:1的结构很类似, 这里N:1的关系需要注意的是, 1指的是1个ViewLogic类型， 实际上对于ViewLogic实例来说, 还是Presenter:ViewLogic = 1:1   
+
+### MVPFramework_More
+此项目引用了2个第三方开源库(HZH_Controls、Materials)作为自己的组件库.
+![](README_images/more_examples.png)
