@@ -41,7 +41,6 @@
             this.lbsay.TabIndex = 0;
             this.lbsay.Text = "label1";
             this.lbsay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbsay.Click += new System.EventHandler(this.label1_Click);
             // 
             // HelloWorldView
             // 
